@@ -53,9 +53,10 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Attribute.fs" />
-    <Compile Include="Modules.fs" />
-    <Compile Include="InformationObjectDefinitions.fs" />
-    <None Include="Script.fsx" />
+    <Compile Include="SOPCommonModule.fs" />
+    <Compile Include="PatientModule.fs" />
+    <Compile Include="GeneralImageModule.fs" />
+    <Compile Include="ComputedTomographyImageIOD.fs" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

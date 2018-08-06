@@ -2,7 +2,9 @@
 
 open System
 
-type UniqueIdentifier = string
+type UniqueIdentifier = 
+    string
+
 type Tag = 
     { Group:uint32; 
         Element:uint32 }
@@ -10,6 +12,7 @@ type Tag =
 type Attribute = 
     { Tag:Tag; 
         Values:Values }
+
 and Values =
 | SQ of SequenceItem list
 | UI of UniqueIdentifier[]
@@ -17,6 +20,7 @@ and Values =
 | US of uint16[]
 | SH of string[]
 | DT of DateTime[]
+
 and SequenceItem = 
     { ItemNumber:uint16; 
         Attributes: Attribute list }
