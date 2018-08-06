@@ -22,6 +22,12 @@ type ``given a list with multiple DICOM attributes`` ()=
         |> should equal { Tag=tag2; Values=IS [| 902 |] }
 
    [<TestMethod>] member test.
+    ``when asked to find the head value for one tag in the list.`` ()=
+        attributes
+        |> LambdaDicom.Attribute.findHeadValue<int32> tag2
+        |> should equal 902
+
+   [<TestMethod>] member test.
     ``when asked to find another tag in the list.`` ()=
         attributes
         |> LambdaDicom.Attribute.find tag3

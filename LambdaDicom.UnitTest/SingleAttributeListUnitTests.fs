@@ -1,10 +1,11 @@
 namespace LambdaDicom.UnitTest.Tests
 
+open System.Collections.Generic
 open Microsoft.VisualStudio.TestTools.UnitTesting
 open FsUnit.MsTest
-open LambdaDicom
-open System.Collections.Generic
 open NUnit.Framework
+open LambdaDicom
+
 
 [<TestClass>] 
 type ``given a list of a single DICOM attributes`` ()=
@@ -12,10 +13,16 @@ type ``given a list of a single DICOM attributes`` ()=
    let attributes = [ { Tag=tag; Values=UI [| "1.2.3.4" |] } ]
 
    [<TestMethod>] member test.
-    ``when asked to find then single tag in the list.`` ()=
+    ``when asked to find the single tag in the list.`` ()=
         attributes
         |> LambdaDicom.Attribute.find tag
         |> should equal { Tag=tag; Values=UI [| "1.2.3.4" |] }
+
+   [<TestMethod>] member test.
+    ``when asked to find the value for the single tag in the list.`` ()=
+        attributes
+        |> LambdaDicom.Attribute.findHeadValue<UniqueIdentifier> tag
+        |> should equal "1.2.3.4"
 
    [<TestMethod>] member test.
     ``when asked to find a tag that is not in the list.`` ()=
