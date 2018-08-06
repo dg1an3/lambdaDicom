@@ -3,6 +3,7 @@
 open System
 
 module Modules =
+
     type SOPCommonModule = 
         { SOPClassUID:UniqueIdentifier; 
             SOPInstanceUID:UniqueIdentifier; }
@@ -15,8 +16,16 @@ module Modules =
         { SOPClassUID=(attributes |> Attribute.findHeadValue<UniqueIdentifier> {Group=0x0000u; Element=0x0000u});
             SOPInstanceUID=(attributes |> Attribute.findHeadValue<UniqueIdentifier> {Group=0x0000u; Element=0x0000u}); }
 
+
     type PatientModule = 
         { PatientId:string }
+
+    let patientToAttributes (pm:PatientModule) =
+        [ {Tag={Group=0x0000u; Element=0x0000u}; Values=UI [| pm.PatientId |]}; ]
+
+    let attributesToPatient attributes =
+        { PatientId=(attributes |> Attribute.findHeadValue<UniqueIdentifier> {Group=0x0000u; Element=0x0000u}); }
+
 
     type GeneralImageModule = 
         { AcquisitionDateTime:DateTime }

@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LambdaDicom", "LambdaDicom\LambdaDicom.fsproj", "{B865C953-1652-4313-A6D0-03BFA0166C6D}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LambdaDicom.UnitTest", "LambdaDicom.UnitTest\LambdaDicom.UnitTest.fsproj", "{3BB1446B-6FDD-4EEE-ABA2-8F2394BDB1E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaDicom.CsUnitTest", "LambdaDicom.CsUnitTest\LambdaDicom.CsUnitTest.csproj", "{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B865C953-1652-4313-A6D0-03BFA0166C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B865C953-1652-4313-A6D0-03BFA0166C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B865C953-1652-4313-A6D0-03BFA0166C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB1446B-6FDD-4EEE-ABA2-8F2394BDB1E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB1446B-6FDD-4EEE-ABA2-8F2394BDB1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB1446B-6FDD-4EEE-ABA2-8F2394BDB1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB1446B-6FDD-4EEE-ABA2-8F2394BDB1E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
