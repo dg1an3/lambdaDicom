@@ -4,14 +4,7 @@ open Microsoft.VisualStudio.TestTools.UnitTesting
 open FsUnit.MsTest
 open LambdaDicom
 open System.Collections.Generic
-
-
-type LightBulb(state) =
-   member x.On = state
-   override x.ToString() =
-       match x.On with
-       | true  -> "On"
-       | false -> "Off"
+open NUnit.Framework
 
 [<TestClass>] 
 type ``given a list of a single DICOM attributes`` ()=
@@ -25,9 +18,14 @@ type ``given a list of a single DICOM attributes`` ()=
         |> should equal { Tag=tag; Values=UI [| "1.2.3.4" |] }
 
    [<TestMethod>] member test.
-    ``when asked to find a different tag in then list.`` ()=
+    ``when asked to find a tag that is not in the list.`` ()=
+      try
         attributes
         |> LambdaDicom.Attribute.find {Group=0x0002u;Element=0x0003u}
-        |> should throw typeof<System.Exception>
+        |> ignore
+        Assert.Fail()
+      with
+        | :? KeyNotFoundException -> ()
+        | _ -> failwith("The test did not throw the correct exception.")
         
 

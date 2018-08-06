@@ -16,7 +16,7 @@ type Attribute =
 and Values =
 | SQ of SequenceItem list
 | UI of UniqueIdentifier[]
-| IS of uint32[]
+| IS of int32[]
 | US of uint16[]
 | SH of string[]
 | DT of DateTime[]
