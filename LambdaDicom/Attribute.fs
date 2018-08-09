@@ -45,3 +45,15 @@ module Attribute =
     let findHeadValue<'v> tag =
         findValues<'v> tag >> Seq.head
         
+    let arrayValues<'ValueType> (vr:Values) (value:'ValueType[]) =
+        match (vr) with
+        | UI _ -> UI (value |> Array.map (fun v -> Convert.ToString(v)))
+        | IS _ -> IS (value |> Array.map (fun v -> Convert.ToInt32(v)))
+        | US _ -> US (value |> Array.map (fun v -> Convert.ToUInt16(v)))
+        | SH _ -> SH (value |> Array.map (fun v -> Convert.ToString(v)))
+        | DT _ -> DT (value |> Array.map (fun v -> Convert.ToDateTime(v)))
+        | SQ _ -> raise (Exception(""))
+
+    let singleValue<'ValueType> (vr:Values) (value:'ValueType) =
+        arrayValues vr [| value |]
+

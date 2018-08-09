@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Attribute.fs" />
+    <Compile Include="DataDictionary.fs" />
     <Compile Include="Modules.fs" />
     <Compile Include="InformationObjectDefinitions.fs" />
     <Content Include="packages.config" />
