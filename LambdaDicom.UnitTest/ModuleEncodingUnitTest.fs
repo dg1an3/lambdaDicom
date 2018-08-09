@@ -8,7 +8,7 @@ open System
 open LambdaDicom
 
 [<TestClass>] 
-type ``encode and decode an SOPCommon`` () =`
+type ``encode and decode an SOPCommon`` () =
     [<TestMethod>]
     member __.``convert sop common to attribute sequence`` () =
         let sopCommon = SOPCommonModule("1.2.3", "4.5.6")

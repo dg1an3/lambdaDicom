@@ -9,6 +9,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LambdaDicom.UnitTest", "Lam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaDicom.CsUnitTest", "LambdaDicom.CsUnitTest\LambdaDicom.CsUnitTest.csproj", "{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HelloWorldTypeProvider", "HelloWorldTypeProvider\HelloWorldTypeProvider.fsproj", "{9E10975F-4A55-4A12-B197-8F58C9DF89C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{056C4C0E-5CE4-433F-9428-1AC9A888FDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E10975F-4A55-4A12-B197-8F58C9DF89C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E10975F-4A55-4A12-B197-8F58C9DF89C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E10975F-4A55-4A12-B197-8F58C9DF89C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E10975F-4A55-4A12-B197-8F58C9DF89C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
