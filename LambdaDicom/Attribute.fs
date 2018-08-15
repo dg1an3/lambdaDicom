@@ -13,6 +13,7 @@ type Attribute =
     { Tag:Tag; 
         Values:Values }
 
+// reference http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_6.2.html
 and Values =
 | SQ of SequenceItem list
 | UI of UniqueIdentifier[]
@@ -26,6 +27,8 @@ and SequenceItem =
         Attributes: Attribute list }
 
 module Attribute =
+
+    open System.IO
 
     let find tag attributes =
         let matchTag attribute = 
@@ -57,3 +60,24 @@ module Attribute =
     let singleValue<'ValueType> (vr:Values) (value:'ValueType) =
         arrayValues vr [| value |]
 
+    let readFromStream (stream:Stream) =
+        stream.Seek(int64 0, SeekOrigin.Begin) |> ignore
+        use reader = new BinaryReader(stream)
+        let eof = 
+            reader.BaseStream.Position >= reader.BaseStream.Length
+        let readAttribute = 
+            let tag = 
+                {Group=reader.ReadUInt32(); 
+                    Element=reader.ReadUInt32()}
+            let valueRepresentation = reader.ReadBytes(2)
+            let valueLength = int (reader.ReadUInt32())
+            let values = 
+                match valueRepresentation with
+                | "UI"B -> UI (reader.ReadChars(valueLength).ToString().Split('/'))
+                | "IS"B -> IS (Array.init (valueLength/sizeof<int32>) (fun n -> reader.ReadInt32()))
+                | "US"B -> US (Array.init (valueLength/sizeof<uint16>) (fun n -> reader.ReadUInt16()))
+                | "SH"B -> SH (reader.ReadChars(valueLength).ToString().Split('/'))
+                | "DT"B -> DT (Array.init valueLength (fun n -> DateTime.Parse(reader.ReadString())))
+                | _ -> raise (Exception("invalid VR"))
+            {Tag=tag; Values=values}
+        seq { while not(eof) do yield readAttribute }
