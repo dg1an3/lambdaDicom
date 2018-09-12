@@ -54,13 +54,15 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="ProvidedTypes.fsi" />
     <Compile Include="ProvidedTypes.fs" />
+    <Compile Include="BasicProvider.Runtime.fs" />
+    <Compile Include="BasicProvider.Provider.fs" />
     <Compile Include="SampleTypeProvider.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
-      <HintPath>..\packages\FSharp.Core.3.1.2.5\lib\net40\FSharp.Core.dll</HintPath>
+      <HintPath>..\packages\FSharp.Core.4.2.3\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Data.TypeProviders">
       <HintPath>..\packages\FSharp.Data.TypeProviders.5.0.0.6\lib\net40\FSharp.Data.TypeProviders.dll</HintPath>
@@ -70,7 +72,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.ValueTuple">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
