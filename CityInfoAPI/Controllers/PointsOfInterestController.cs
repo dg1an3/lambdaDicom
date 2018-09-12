@@ -64,5 +64,29 @@ namespace CityInfoAPI.Controllers
             return CreatedAtRoute("GetPointOfInterest", 
                 new { cityId = cityId, poiId = newId }, newDto);
         }
+
+        [HttpPut("{cityId}/pointsofinterest/{id}")]
+        public IActionResult UpdatePointOfInterest(int cityId, int id,
+            [FromBody] PointOfInterestForUpdateDto pointOfInterest)
+        {
+            if (pointOfInterest == null)
+                return BadRequest();
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var city = CityDataStore.Instance.Cities.FirstOrDefault(cit => cit.Id == cityId);
+            if (city == null)
+                return NotFound();
+
+            var poiFromStore = city.PointsOfInterest.FirstOrDefault(poi => poi.Id == id);
+            if (poiFromStore == null)
+                return NotFound();
+
+            poiFromStore.Name = pointOfInterest.Name;
+            poiFromStore.Description = pointOfInterest.Description;
+
+            return NoContent();
+        }
     }
 }
