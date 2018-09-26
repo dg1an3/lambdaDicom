@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace OidSecuredReverseProxy
 {
@@ -30,7 +31,18 @@ namespace OidSecuredReverseProxy
                     options.ApiSecret = "secret";
                 });
 
-            services.AddSingleton<ProxyService>();
+            Uri baseUri = new Uri("https://example.com");
+            var proxyOptions = new ProxyOptions
+            {
+                Scheme = baseUri.Scheme,
+                Host = new HostString(baseUri.Authority),
+                PathBase = baseUri.AbsolutePath,
+                AppendQuery = new QueryString(baseUri.Query)
+            };
+            var sharedProxyOptions = new SharedProxyOptions();
+            services.AddSingleton<ProxyService>(
+                new ProxyService(Options.Create(proxyOptions),
+                    Options.Create(sharedProxyOptions)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

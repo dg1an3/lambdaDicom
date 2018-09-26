@@ -43,7 +43,7 @@ namespace ClientCredentialsConsole
             };
 
             client.SetBearerToken(token);
-            var response = await client.GetStringAsync("what/is/this");
+            var response = await client.GetStringAsync(@""); // @"what/is/this");
 
             "\n\nService claims:".ConsoleGreen();
             Console.WriteLine(response);
