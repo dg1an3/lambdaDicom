@@ -17,10 +17,13 @@ namespace OidSecuredReverseProxy
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+#if USE_MVC
             services.AddMvc();
+#endif
             services.AddAuthorization();
             services.AddCors();
             services.AddDistributedMemoryCache();
+
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
@@ -53,7 +56,11 @@ namespace OidSecuredReverseProxy
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();
+#if USE_MVC
             app.UseMvc();
+#else
+            app.UseMiddleware<CheckAuthenticationMiddleware>();
+#endif
         }
     }
 }
